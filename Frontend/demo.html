@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Auth Demo - FoodShare</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .demo-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .demo-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .demo-logo {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .demo-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .auth-status {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border: 2px solid var(--border-color);
+        }
+        
+        .status-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .status-content {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        
+        .demo-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .demo-actions .btn {
+            justify-content: center;
+        }
+        
+        .back-link {
+            margin-top: 2rem;
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .back-link:hover {
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .user-details {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+        }
+        
+        .user-email {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .user-provider {
+            opacity: 0.9;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-card">
+            <div class="demo-logo">
+                <i class="fas fa-heart"></i>
+            </div>
+            <h1 class="demo-title">Supabase Auth Demo</h1>
+            <p class="demo-subtitle">
+                This demo showcases GitHub OAuth authentication using Supabase. 
+                Click the button below to sign in with your GitHub account.
+            </p>
+            
+            <div class="auth-status">
+                <div class="status-title">Authentication Status</div>
+                <div id="authStatus" class="status-content">
+                    Checking authentication...
+                </div>
+            </div>
+            
+            <div id="authContainer">
+                <!-- Auth content will be dynamically populated by Supabase -->
+            </div>
+            
+            <div class="demo-actions">
+                <button class="btn btn-primary btn-large" onclick="window.location.href='index.html'">
+                    <i class="fas fa-home"></i>
+                    Back to Main App
+                </button>
+            </div>
+            
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Return to FoodShare
+            </a>
+        </div>
+    </div>
+
+    <!-- Supabase Integration Scripts -->
+    <script type="module" src="config.js"></script>
+    <script type="module" src="supabase.js"></script>
+    
+    <script>
+        // Custom auth status display for demo
+        function updateDemoAuthStatus() {
+            const authStatus = document.getElementById('authStatus');
+            const currentUser = window.getCurrentUser ? window.getCurrentUser() : null;
+            
+            if (currentUser) {
+                authStatus.innerHTML = `
+                    <div class="user-details">
+                        <div class="user-email">${currentUser.email}</div>
+                        <div class="user-provider">Authenticated via ${currentUser.app_metadata?.provider || 'GitHub'}</div>
+                    </div>
+                `;
+            } else {
+                authStatus.innerHTML = 'Not authenticated. Sign in with GitHub to get started!';
+            }
+        }
+        
+        // Update status when auth changes
+        document.addEventListener('DOMContentLoaded', function() {
+            // Wait for Supabase to initialize
+            setTimeout(updateDemoAuthStatus, 1000);
+            
+            // Listen for auth changes
+            setInterval(updateDemoAuthStatus, 2000);
+        });
+    </script>
+</body>
+</html>

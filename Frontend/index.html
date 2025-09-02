@@ -30,10 +30,9 @@
                     <a href="#contact" class="nav-link">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn btn-primary" onclick="openModal('loginModal')">Login</button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-secondary" onclick="openModal('signupModal')">Sign Up</button>
+                    <div id="authContainer">
+                        <!-- Auth content will be dynamically populated by Supabase -->
+                    </div>
                 </li>
             </ul>
             <div class="hamburger">
@@ -425,6 +424,8 @@
         </div>
     </div>
 
+    <script type="module" src="config.js"></script>
+    <script type="module" src="supabase.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
