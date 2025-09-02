@@ -29,21 +29,6 @@ function initializeAuth() {
 	});
 }
 
-// GitHub OAuth sign in (unchanged)
-async function signInWithGitHub() {
-	try {
-		const { error } = await supabase.auth.signInWithOAuth({
-			provider: 'github',
-			options: { redirectTo: window.location.origin }
-		});
-		if (error) throw error;
-		showNotification('Redirecting to GitHub...', 'info');
-	} catch (error) {
-		console.error('Error signing in with GitHub:', error);
-		showNotification(error.message || 'Failed to sign in with GitHub', 'error');
-	}
-}
-
 // Email/password signup
 async function signUpWithEmailPassword(email, password, metadata = {}) {
 	try {
@@ -122,11 +107,11 @@ function updateAuthUI() {
 		`;
 		updateNavigationForUser();
 	} else {
-		// User is not authenticated
+		// User is not authenticated - show email login entry point
 		authContainer.innerHTML = `
-			<button class="btn btn-github" onclick="signInWithGitHub()">
-				<i class="fab fa-github"></i>
-				Login with GitHub
+			<button class="btn btn-primary" onclick="openModal('loginModal')">
+				<i class="fas fa-sign-in-alt"></i>
+				Login
 			</button>
 		`;
 		resetNavigation();
@@ -244,7 +229,6 @@ function attachEmailAuthHandlers() {
 
 // Export functions for global access
 window.supabase = supabase;
-window.signInWithGitHub = signInWithGitHub;
 window.signOut = signOut;
 window.getCurrentUser = getCurrentUser;
 window.isAuthenticated = isAuthenticated;
@@ -257,7 +241,6 @@ document.addEventListener('DOMContentLoaded', initializeAuth);
 
 export {
 	supabase,
-	signInWithGitHub,
 	signOut,
 	signUpWithEmailPassword,
 	signInWithEmailPassword,
