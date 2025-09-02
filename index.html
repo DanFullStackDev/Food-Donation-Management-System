@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodShare - Food Donation Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-heart"></i>
+                <span>FoodShare</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#impact" class="nav-link">Impact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-primary" onclick="openModal('loginModal')">Login</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-secondary" onclick="openModal('signupModal')">Sign Up</button>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Share Food, Share Hope</h1>
+                <p class="hero-description">
+                    Connect food donors with charities and organizations to reduce waste and feed those in need. 
+                    Every donation makes a difference in someone's life.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-large" onclick="openModal('donationModal')">
+                        <i class="fas fa-gift"></i>
+                        Donate Food
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="openModal('requestModal')">
+                        <i class="fas fa-hands-helping"></i>
+                        Request Food
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Fresh Food</h3>
+                    <p>Quality donations</p>
+                </div>
+                <div class="floating-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community</h3>
+                    <p>Stronger together</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <h3>Donate</h3>
+                    <p>Share surplus food with those who need it most. Simple form, big impact.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Connect</h3>
+                    <p>Our platform matches donations with verified charities and organizations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Deliver</h3>
+                    <p>Safe and timely delivery to ensure food reaches those in need.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">15,420</div>
+                    <div class="stat-label">Meals Provided</div>
+                    <div class="stat-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,847</div>
+                    <div class="stat-label">Donations Made</div>
+                    <div class="stat-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">156</div>
+                    <div class="stat-label">Charities Served</div>
+                    <div class="stat-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8.2</div>
+                    <div class="stat-label">Tons Saved</div>
+                    <div class="stat-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hello@foodshare.org</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Charity Lane, Hope City, HC 12345</span>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="4" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FoodShare</h3>
+                    <p>Connecting communities through food donation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#impact">Impact</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#" onclick="openModal('donationModal')">Donate Food</a></li>
+                        <li><a href="#" onclick="openModal('requestModal')">Request Food</a></li>
+                        <li><a href="#" onclick="openModal('dashboardModal')">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FoodShare. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Welcome Back</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Login</button>
+            </form>
+            <p class="auth-switch">
+                Don't have an account? <a href="#" onclick="switchModal('loginModal', 'signupModal')">Sign up</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            <h2>Join FoodShare</h2>
+            <form class="auth-form">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label>I am a:</label>
+                    <div class="role-selector">
+                        <label class="role-option">
+                            <input type="radio" name="role" value="donor" required>
+                            <span class="role-label">
+                                <i class="fas fa-gift"></i>
+                                Food Donor
+                            </span>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="charity" required>
+                            <span class="role-label">
+                                <i class="fas fa-hands-helping"></i>
+                                Charity/Organization
+                            </span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+            </form>
+            <p class="auth-switch">
+                Already have an account? <a href="#" onclick="switchModal('signupModal', 'loginModal')">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Donation Modal -->
+    <div id="donationModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeModal('donationModal')">&times;</span>
+            <h2>Donate Food</h2>
+            <form class="donation-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="foodType">Food Type</label>
+                        <select id="foodType" required>
+                            <option value="">Select food type</option>
+                            <option value="fruits">Fruits & Vegetables</option>
+                            <option value="grains">Grains & Bread</option>
+                            <option value="dairy">Dairy Products</option>
+                            <option value="meat">Meat & Fish</option>
+                            <option value="canned">Canned Goods</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" min="1" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryDate">Expiry Date</label>
+                        <input type="date" id="expiryDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pickupLocation">Pickup Location</label>
+                        <input type="text" id="pickupLocation" placeholder="Address or landmark" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="3" placeholder="Additional details about the food..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contactPhone">Contact Phone</label>
+                    <input type="tel" id="contactPhone" placeholder="Your phone number" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit Donation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Request Modal -->
+    <div id="requestModal" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close" onclick="closeModal('requestModal')">&times;</span>
+            <h2>Request Food</h2>
+            <form class="request-form">
+                <div class="form-group">
+                    <label for="orgName">Organization Name</label>
+                    <input type="text" id="orgName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="orgType">Organization Type</label>
+                        <select id="orgType" required>
+                            <option value="">Select type</option>
+                            <option value="shelter">Homeless Shelter</option>
+                            <option value="foodbank">Food Bank</option>
+                            <option value="community">Community Center</option>
+                            <option value="school">School</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="peopleCount">Number of People to Feed</label>
+                        <input type="number" id="peopleCount" min="1" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="foodNeeds">Food Needs</label>
+                    <textarea id="foodNeeds" rows="3" placeholder="Describe the types of food you need..."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="deliveryAddress">Delivery Address</label>
+                        <input type="text" id="deliveryAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="urgent">Urgency Level</label>
+                        <select id="urgent" required>
+                            <option value="low">Low - Within a week</option>
+                            <option value="medium">Medium - Within 3 days</option>
+                            <option value="high">High - Within 24 hours</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="orgContact">Contact Person</label>
+                    <input type="text" id="orgContact" placeholder="Name and phone number" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Modal -->
+    <div id="dashboardModal" class="modal">
+        <div class="modal-content modal-extra-large">
+            <span class="close" onclick="closeModal('dashboardModal')">&times;</span>
+            <h2>Dashboard</h2>
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" onclick="switchTab('donations')">My Donations</button>
+                <button class="tab-btn" onclick="switchTab('requests')">My Requests</button>
+                <button class="tab-btn" onclick="switchTab('available')">Available Food</button>
+            </div>
+            
+            <div id="donationsTab" class="tab-content active">
+                <div class="dashboard-header">
+                    <h3>My Donations</h3>
+                    <button class="btn btn-primary" onclick="openModal('donationModal')">New Donation</button>
+                </div>
+                <div class="donations-grid" id="donationsGrid">
+                    <!-- Donations will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="requestsTab" class="tab-content">
+                <div class="dashboard-header">
+                    <h3>My Requests</h3>
+                    <button class="btn btn-primary" onclick="openModal('requestModal')">New Request</button>
+                </div>
+                <div class="requests-grid" id="requestsGrid">
+                    <!-- Requests will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div id="availableTab" class="tab-content">
+                <div class="dashboard-header">
+                    <h3>Available Food</h3>
+                </div>
+                <div class="available-grid" id="availableGrid">
+                    <!-- Available food will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
